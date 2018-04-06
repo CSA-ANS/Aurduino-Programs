@@ -14,7 +14,7 @@ void red_LED()
     digitalWrite(RED, HIGH);
     delay(100);
     digitalWrite(RED, LOW);
-    delay(500);
+    /*delay(500);
     digitalWrite(RED, HIGH);
     delay(100);
     digitalWrite(RED, LOW);
@@ -30,7 +30,7 @@ void red_LED()
     digitalWrite(RED, HIGH);
     delay(100);
     digitalWrite(RED, LOW);
-    delay(100);
+    delay(100);*/
 }
 
 void white_LED()
@@ -38,7 +38,7 @@ void white_LED()
     digitalWrite(WHITE, HIGH);
     delay(100);
     digitalWrite(WHITE, LOW);
-    delay(100);
+    /*delay(100);
     digitalWrite(WHITE, HIGH);
     delay(100);
     digitalWrite(WHITE, LOW);
@@ -54,7 +54,7 @@ void white_LED()
     digitalWrite(WHITE, HIGH);
     delay(100);
     digitalWrite(WHITE, LOW);
-    delay(500);
+    delay(500);*/
 }
 void setup() 
 {
@@ -85,7 +85,6 @@ void loop()
   {
     case 1:
     red_LED();
-    digitalWrite(RED, LOW);
     break;
     
     case 2:
@@ -96,6 +95,10 @@ void loop()
     red_LED();
     white_LED();
     break;
+
+    default:
+    digitalWrite(RED, LOW);
+    digitalWrite(WHITE, LOW);
   }
   laststate1=state1;
   laststate2=state2;
