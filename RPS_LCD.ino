@@ -6,13 +6,13 @@ const int rock=2;
 const int paper=4;
 const int scissors=3;
 
+//this is the constant for the start button
 const int start_button=11;
 
+//these are global variables that count how mnay wins, losses, and ties a person has
 int win;
 int lose;
 int tie;
-
-float counter;
 
 //defines pins for lcd screen
 LiquidCrystal lcd(5, 6, 7, 8, 9, 10);
@@ -28,29 +28,29 @@ void setup(){
 }
 
 void loop(){
-  //reads all buttons
+  //makes win, lose, and tie 0
   win=0;
   lose=0;
   tie=0;
   lcd.setCursor(0, 0);
   lcd.print("  Press Button  "); 
   lcd.setCursor(0, 1);
-  lcd.print("    To Start    ");
+  lcd.print("    To Start    ");//tells them to press the start button
   int button_read=digitalRead(start_button);
-  if (button_read==LOW){
+  if (button_read==LOW){//waits for them to press it
   lcd.clear();
   lcd.setCursor(0, 0);
   lcd.print("  Rock, Paper,  ");
   lcd.setCursor(0, 1);
-  lcd.print("   or Scissors  ");
-  for (int i=1; i<4; i++){
+  lcd.print("   or Scissors  ");//tells them to press rock paper or scissors
+  for (int i=1; i<4; i++){//runs three times because it is best of three
   int rockbutton=digitalRead(rock);
   int paperbutton=digitalRead(paper);
-  int scissorsbutton=digitalRead(scissors);
-  while (rockbutton==HIGH && paperbutton==HIGH && scissorsbutton==HIGH){
+  int scissorsbutton=digitalRead(scissors);//reads all three buttons
+  while (rockbutton==HIGH && paperbutton==HIGH && scissorsbutton==HIGH){//waits for one to be pressed
   rockbutton=digitalRead(rock);
   paperbutton=digitalRead(paper);
-  scissorsbutton=digitalRead(scissors);
+  scissorsbutton=digitalRead(scissors);//reads them again
   }
     lcd.clear();
     int rps=random(1, 4);//generates a random number and turns on LED based on that number
@@ -60,11 +60,11 @@ void loop(){
       lcd.setCursor(0,1);
       lcd.print("       ");
       lcd.print(i, DEC);
-      lcd.print("        ");
+      lcd.print("        ");//prints what game they are on
       delay(1000);
       lcd.clear();
       lcd.setCursor(0, 0);
-      lcd.print("    Bot plays   ");
+      lcd.print("    Bot plays   ");//says what the bot plays
       lcd.setCursor(0, 1);
       lcd.print("      Rock      ");
       delay(1000);
@@ -75,13 +75,13 @@ void loop(){
       lcd.setCursor(0,1);
       lcd.print("       ");
       lcd.print(i, DEC);
-      lcd.print("        ");
+      lcd.print("        ");//prints what game they are on
       delay(1000);
       lcd.clear();
       lcd.setCursor(0, 0);
       lcd.print("    Bot plays   ");
       lcd.setCursor(0, 1);
-      lcd.print("      Paper     ");
+      lcd.print("      Paper     ");//says what the bot plays
       delay(1000);
     }
     else if (rps==3){
@@ -90,16 +90,16 @@ void loop(){
       lcd.setCursor(0,1);
       lcd.print("       ");
       lcd.print(i, DEC);
-      lcd.print("        ");
+      lcd.print("        ");//prints what game they are on
       delay(1000);
       lcd.clear();
       lcd.setCursor(0, 0);
       lcd.print("    Bot plays   ");
       lcd.setCursor(0, 1);
-      lcd.print("    Scissors    ");
+      lcd.print("    Scissors    ");//says what the bot plays
       delay(1000);
     }
-
+    //the next 9 ifs determine who wins based on what the bot plays and what button the person pressed. Then they print whether you won, lost, or tied. Also adds to variables win, lose, and tie as the game goes on
     if (rockbutton==LOW && rps==1){
       lcd.clear();
       lcd.setCursor(0, 0);
@@ -114,7 +114,7 @@ void loop(){
       lcd.setCursor(0, 1);
       lcd.print("   or Scissors  ");
     }
-    else if (rockbutton==LOW && rps==2){//All the ways RPS can go and what LED's need to be turned on based on that
+    else if (rockbutton==LOW && rps==2){
       lcd.clear();
       lcd.setCursor(0, 0);
       lcd.print("       YOU      ");
@@ -238,8 +238,8 @@ void loop(){
   lcd.print("     Tie=");
   lcd.print(tie, DEC);
   lcd.print("      ");
-  delay(2000);
-  if (win>1){
+  delay(2000);//prints how many wins, losses, and ties they had
+  if (win>1){//prints whether they won, lost, or tied overall
     lcd.clear();
     lcd.setCursor(0, 0);
     lcd.print("       YOU      ");
@@ -292,19 +292,3 @@ void loop(){
   }  
    
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
